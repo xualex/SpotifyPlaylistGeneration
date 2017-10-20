@@ -84,9 +84,11 @@ def toSongList(randomWalk, df):
 allFeatures = ["danceability", "energy", "key", "loudness", "speechiness", "acousticness",
 				 "instrumentalness", "liveness", "valence", "tempo", "time_signature"]
 
-df = pd.read_csv('song-data-unique.csv')
+df = pd.read_csv('../data/song_data.csv')
 del df['category']
 del df['popularity']
+del df['song_title']
+del df['artist_name']
 ndf = normalizeDf(df)
 
 #Getting some demo code to run
