@@ -1,5 +1,31 @@
+# Spotify Playlist
 
-# Building a playlist spotify
+This project seeks to generate coherent (whatever that means) playlists. The final goal of this project is to be able to authorize a user and build a custom playlist on their account given an input of songs. Various methods of song generation are detailed below. 
+
+
+# Milestones
+
+## Week 1 (10/19/2017)
+
+
+**To Do**
+
+- Get Spotify API endpoints set up
+- Start Linear Generation code
+- Brainstorm other potential generation techniques
+
+**Finished**
+
+- Get repo set up
+- Get team members up to speed
+
+
+
+
+
+
+
+# Building a playlist
 
 In: a bunch of songs & user data  
 Out: a list of song ids (a playlist)
@@ -36,13 +62,4 @@ Choose a starting song and ending song and choose the desired duration of the pl
 
 An analogue for a polygonal segment of multiple songs is easily found by combining multiple line segments, adn we can generalize further by defining arbitrary paths to follow through space.  This is suitable for events where gradual transformations in the atmosphere are desirable.  
 
-
-# Milestones
-
-## Week 1 (10/19/2017)
-
-*TODO*
-
-- Get repo set up
-- Get endpoints set up
 
