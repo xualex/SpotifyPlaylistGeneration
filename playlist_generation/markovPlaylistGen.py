@@ -61,14 +61,14 @@ def songWeightLin(currSong, nextSong, finalSong, time): #Time = 0 means that thi
 		#it should definitely be changed
 		means[i] = currSong[i] + (currSong[i] - finalSong[i]) / time
 		standardDeviations[i] = np.abs((currSong[i] - finalSong[i]) / time)
-	
+
 	#Calculates pdf given all the variables
 	def calcPDF(val, mean, sd):
 		#Gets rid of some infinity problem im too lazy to figure out
 		if sd == 0:
 			return 0
 		return np.exp(-1*(val - mean)**2/(2*sd**2))/np.sqrt(2*np.pi*sd**2)
-	
+
 	#Array contains all the different PDFs for all the metrics
 	pdfVals = np.zeros(currSong.size)
 	for i in range (0, currSong.size):
@@ -122,6 +122,22 @@ def toSongList(randomWalk, df):
 		songList += [df.ix[int(randomWalk[i])].name]
 	return songList
 
+#Turns a list of songs into a URI input
+def toURI(songList):
+    urisArray = []
+    for songId in songList:
+        songURI = 'spotify:track:' + songId
+        urisArray += [songURI]
+    return urisArray
+
+#Turns a list of strings into a big string
+def toString(List):
+	line = ''
+	for thing in List:
+		line += thing + ','
+	return line
+
+
 # featuredPlaylists = requests.get("https://api.spotify.com/v1/browse/featured-playlists", headers=access_header).json()["playlists"]["items"]
 # allFeaturedPlaylistData = {}
 # for i in featuredPlaylists:
@@ -154,10 +170,14 @@ print("mean: ", np.mean(wal))
 print("variance: ", np.var(wal))
 print("elements > 0: ", len(wal[wal > 0]))
 
+
+
 #Getting some demo code to run
-#wa = createWeightArray(ndf.ix[:150])
-#rw = randomWalk(wa, r = 10)
-#sl = toSongList(rw,ndf)
+wa = createWeightArray(ndf.ix[:150])
+rw = randomWalk(wa, r = 10)
+sl = toSongList(rw,ndf)
+uriList = toURI(sl)
+print(toString(uriList))
 
 #print(sl)
 #print(rw)
