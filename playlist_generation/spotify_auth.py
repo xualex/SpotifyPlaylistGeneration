@@ -9,6 +9,9 @@ import base64
 import urllib
 import urllib.parse
 
+#Credentials hidden
+import auth_info
+
 # Authentication Steps, paramaters, and responses are defined at https://developer.spotify.com/web-api/authorization-guide/
 # Visit this url to see all the steps, parameters, and expected response.
 
@@ -16,8 +19,8 @@ import urllib.parse
 app = Flask(__name__)
 
 #  Client Keys
-CLIENT_ID = "9ace5319778f41bab23efb30e7c19d94"
-CLIENT_SECRET = "3c471b527a084c4389e370f4eeee828c"
+CLIENT_ID = auth_info.CLIENT_ID
+CLIENT_SECRET = auth_info.CLIENT_SECRET
 
 # Spotify URLS
 SPOTIFY_AUTH_URL = "https://accounts.spotify.com/authorize"
@@ -29,7 +32,7 @@ SPOTIFY_API_URL = "{}/{}".format(SPOTIFY_API_BASE_URL, API_VERSION)
 
 # Server-side Parameters
 CLIENT_SIDE_URL = "http://127.0.0.1"
-PORT = 8080
+PORT = 5000
 REDIRECT_URI = "{}:{}/callback/q".format(CLIENT_SIDE_URL, PORT)
 
 #Modify Scope to Add in for other functions
@@ -77,7 +80,7 @@ def callback():
     post_request = requests.post(SPOTIFY_TOKEN_URL, data=code_payload, headers=headers)
     """
     # Auth Step 5: Tokens are Returned to Application
-    response_data = json.loads(r.content)
+    response_data = json.loads(r.content.decode('utf-8'))
     access_token = response_data['access_token']
     refresh_token = response_data["refresh_token"]
     token_type = response_data["token_type"]
@@ -98,10 +101,15 @@ def callback():
 
     # Combine profile and playlist data to display
     display_arr = [profile_data] + playlist_data["items"]
-    return render_template("index.html",sorted_array=display_arr)
+    #return render_template("index.html",sorted_array=display_arr)
     # Grab this data and make a dict of name and id for playlist. Present user with choices of playlist and allow them to choose
     # Grab api for choosen playlist
     # Create array for playlist songs nad info from songs
+
+    return
+    #TODO
+
+
 
 if __name__ == "__main__":
     app.run(debug=True,port=PORT)

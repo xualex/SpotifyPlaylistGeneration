@@ -3,3 +3,7 @@
 
 #ignore virtualenv VM
 SVM
+
+#ignore credentials
+playlist_generation/auth_info.py
+
