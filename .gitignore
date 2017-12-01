@@ -6,4 +6,5 @@ SVM
 
 #ignore credentials
 playlist_generation/auth_info.py
+playlist/auth-info.py
 

@@ -1,0 +1,4 @@
+CLIENT_ID = "9ace5319778f41bab23efb30e7c19d94"
+CLIENT_SECRET = "3c471b527a084c4389e370f4eeee828c"
+
+username = 'inversion930'
